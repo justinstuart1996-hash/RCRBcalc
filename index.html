@@ -152,10 +152,8 @@ function calc(){
 function drawRef(){
  const lvh="<tr><th>ระดับ</th>"+PUP.map((_,i)=>`<th>${i+1}</th>`).join("")+"</tr>";
  const row=(n,a)=>`<tr><td>${n}</td>`+a.map(x=>`<td>${fmt(x)}</td>`).join("")+"</tr>";
- const full=PC[9]*5;
  $("ref").innerHTML=lvh+row("S ใช้เรียนสกิลบัฟที่ (ลำดับ)",SKILL)+row("S สะสม",SC)+row("P ใช้อัพระดับนี้ (แบบใหม่)",PUP)+row("P สะสมต่ออย่าง",PC)+
- row("รถที่ต้องมี (S สะสม ÷ 2)",SC.map(x=>Math.ceil(x/2)))+
- `<tr><td colspan="11" style="text-align:left;white-space:normal">เรียนครบ 10 สกิล = ${SC[9]} S (${Math.ceil(SC[9]/2)} คัน) · อัพ 1 บัฟเต็ม 5 อย่าง = ${fmt(full)} P (${Math.ceil(full/20)} คัน) · ครบ 10 บัฟ = ${fmt(full*10)} P (${Math.ceil(full*10/20)} คัน)</td></tr>`;
+ row("รถที่ต้องมี (S สะสม ÷ 2)",SC.map(x=>Math.ceil(x/2)));
 }
 $("n").innerHTML=Array.from({length:11},(_,i)=>`<option value="${i}">${i} สกิล</option>`).join("");
 $("n").onchange=e=>{skills=+e.target.value;drawBuffs();calc()};
